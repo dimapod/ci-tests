@@ -24,16 +24,35 @@ module.exports = function (grunt) {
 			travis: {
 				browsers: ['Firefox', 'PhantomJS']
 			}
-		}
+		},
+		protractor: {
+		    options: {
+				configFile: "node_modules/protractor/referenceConf.js", // Default config file
+				keepAlive: true, // If false, the grunt process stops when the test fails.
+				noColor: false, // If true, protractor will not use colors in its output.
+				args: {
+					// Arguments passed to the command
+				}
+		    },
+		    drone: {
+				options: {
+					configFile: "config/protractor-conf.js",
+					args: {
+						browser:"firefox"
+					}
+				}
+		    }
+		  }
 	});
 
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-protractor-runner');
 
 	grunt.registerTask('test', ['karma:continuous']);
 
 	// Used by the CLI build servers
-	grunt.registerTask('drone', ['karma:drone']);
+	grunt.registerTask('drone', ['karma:drone', 'protractor:drone']);
 	grunt.registerTask('travis', ['karma:travis']);
 };
