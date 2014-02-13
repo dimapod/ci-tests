@@ -11,6 +11,8 @@
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-chrome-launcher": "~0.1.0",
     "karma-firefox-launcher": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-coverage": "~0.1.0",
     "protractor" : "~0.17.0"
   }
 }
