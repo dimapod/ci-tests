@@ -29,5 +29,8 @@
     "test": "node node_modules/grunt-cli/bin/grunt build",
     "test_drone": "node node_modules/grunt-cli/bin/grunt drone",
     "test_travis": "node node_modules/grunt-cli/bin/grunt travis"
+  },
+  "dependencies": {
+    "express": "~3.4.8"
   }
 }

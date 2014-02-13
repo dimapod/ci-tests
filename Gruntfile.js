@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 				browsers: ['Chrome']
 			},
 			drone: {
-				browsers: ['Firefox', 'Chrome', 'PhantomJS']
+				browsers: [/*'Firefox', 'Chrome', */'PhantomJS']
 			},
 			travis: {
 				browsers: ['Firefox', 'PhantomJS']
@@ -49,10 +49,16 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-protractor-runner');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	grunt.registerTask('test', ['karma:continuous']);
 
+
+	grunt.registerTask('express', 'Start a custom web server', function() {
+		require('./server/server.js');
+	});
+
 	// Used by the CLI build servers
-	grunt.registerTask('drone', ['karma:drone', 'protractor:drone']);
+	grunt.registerTask('drone', ['express', 'karma:drone', 'protractor:drone']);
 	grunt.registerTask('travis', ['karma:travis']);
 };
