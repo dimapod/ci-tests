@@ -3,8 +3,16 @@
   "description": "A starter project for AngularJS",
   "repository": "https://github.com/angular/angular-seed",
   "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.5.2",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-copy": "~0.4.1",
     "phantomjs" : "~1.9",
     "karma" : "~0.10",
+    "grunt-karma": "~0.6.2",
+    "grunt-jsdoc": "~0.3.2",
+    "grunt-cli": "~0.1.8",
     "karma-junit-reporter" : "~0.1",
     "karma-jasmine" : "~0.1",
     "karma-script-launcher": "~0.1.0",
@@ -14,5 +22,10 @@
     "karma-requirejs": "~0.1.0",
     "karma-coverage": "~0.1.0",
     "protractor" : "~0.17.0"
+  },
+  "scripts": {
+    "test": "node node_modules/grunt-cli/bin/grunt build",
+    "test_drone": "node node_modules/grunt-cli/bin/grunt drone",
+    "test_travis": "node node_modules/grunt-cli/bin/grunt travis"
   }
 }
