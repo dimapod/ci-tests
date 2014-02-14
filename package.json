@@ -1,7 +1,7 @@
 {
   "name": "angularjs-seed",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "CI Tests",
+  "repository": "https://github.com/dimapod/ci-tests",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.5.2",
@@ -22,13 +22,11 @@
     "karma-requirejs": "~0.1.0",
     "karma-coverage": "~0.1.0",
     "protractor": "~0.18.1",
-    "grunt-protractor-runner": "~0.2.3",
-    "grunt-contrib-connect": "~0.6.0"
+    "grunt-protractor-runner": "~0.2.3"
   },
   "scripts": {
     "test": "node node_modules/grunt-cli/bin/grunt build",
-    "test_drone": "node node_modules/grunt-cli/bin/grunt drone",
-    "test_travis": "node node_modules/grunt-cli/bin/grunt travis"
+    "test_drone": "node node_modules/grunt-cli/bin/grunt drone"
   },
   "dependencies": {
     "express": "~3.4.8"
