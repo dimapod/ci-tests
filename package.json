@@ -29,6 +29,7 @@
     "test_drone": "node node_modules/grunt-cli/bin/grunt drone"
   },
   "dependencies": {
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "mongoose": "~3.8.7"
   }
 }
