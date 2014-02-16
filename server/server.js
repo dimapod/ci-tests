@@ -1,31 +1,22 @@
-var express = require('express')
+var debug = require('debug')('app.server')
+    , express = require('express')
     , path = require('path')
-    , http = require('http')
-    , mongoose = require('mongoose');
+    , config = require('./config')
+    , db = require('./db/db')
+    , handler = require('./handler/handler')(db);
 
-//mongoose.connect('mongodb://localhost/ciIntegration');
-mongoose.connect('mongodb://ds033559.mongolab.com:33559/ciintegration', {user: 'test', pass: 'supertest'});
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-    console.log("Connected to mongodb !")
-});
-
+debug('Creating Express server...');
 var app = express();
 
-app.configure(function () {
-    app.set('port', process.env.PORT || 8000);
-    app.use(express.static(path.join(__dirname, '../')));
-    app.use(express.bodyParser());
+// Apply the configuration
+config.applyConfiguration(app);
+
+// Setup routes
+require('./router/router')(app, handler);
+
+app.listen(app.get('port'), function () {
+    debug("Express server listening on port %d in %s mode", app.get('port'), process.env.NODE_ENV);
 });
 
-// REST API
-require('./rest')(app, mongoose);
-
-var server = http.createServer(app);
-server.listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
-
-module.exports = server;
+// Export the server
+module.exports = app;
