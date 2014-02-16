@@ -1,5 +1,5 @@
-/* app css stylesheet */
-
+/* app scss stylesheet */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\000033}}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -7,23 +7,28 @@
   padding: 0 0 0.5em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\0000310}}
 .menu:before {
   content: "[";
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\0000314}}
 .menu:after {
   content: "]";
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\0000318}}
 .menu > li {
   display: inline;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\0000322}}
 .menu > li:before {
   content: "|";
   padding-right: 0.3em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyachiy\/Development\/xke\/ANGULAR\/ci-tests\/app\/styles\/app\.scss}line{font-family:\0000327}}
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
