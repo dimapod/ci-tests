@@ -35,6 +35,7 @@
   "dependencies": {
     "express": "~3.4.8",
     "mongoose": "~3.8.7",
-    "debug": "~0.7.4"
+    "debug": "~0.7.4",
+    "karma-coffee-preprocessor": "~0.1.3"
   }
 }
