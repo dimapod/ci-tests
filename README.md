@@ -19,7 +19,7 @@
 ## Build & deployment
 - grunt.js
 - live compilation scss/compass
-- build with [drone.io](https://drone.io/github.com/dimapod/ci-tests) [![Build Status](https://drone.io/github.com/dimapod/ci-tests/status.png)](https://drone.io/github.com/dimapod/ci-tests/latest)
+- CI with [drone.io](https://drone.io/github.com/dimapod/ci-tests) [![Build Status](https://drone.io/github.com/dimapod/ci-tests/status.png)](https://drone.io/github.com/dimapod/ci-tests/latest) and [TravisCI](https://travis-ci.org/dimapod/ci-tests) [![Build Status](https://travis-ci.org/dimapod/ci-tests.png?branch=master)](https://travis-ci.org/dimapod/ci-tests)
   - runs unit tests
   - runs integration tests
   - automatic deploy to [heroku](http://ci-tests.herokuapp.com/app)
