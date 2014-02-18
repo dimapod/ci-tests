@@ -1,27 +1,28 @@
 # CI
 
 ## Front
-* AngularJS ([seed](https://github.com/angular/angular-seed))
-* Sass with Compass
-* Karma: for unit tests
-* Protractor: for integration tests
+- AngularJS ([seed](https://github.com/angular/angular-seed))
+  - feature oriented organisation (todo) 
+- Sass with Compass
+- Tests
+  - karma: for unit tests (coffeescript)
+  - protractor: for integration tests (coffeescript)
 
 ## Server
-* node.js
-* express
-* mongoose (mongo from [mongolab.com](https://mongolab.com/welcome/)
-* [debug](https://github.com/visionmedia/debug) for node
-* promises (todo)
-* express-jwt (todo)
+- node.js (modul organisation inspired by [express-boilerplate](https://github.com/PuerkitoBio/express-boilerplate/tree/master/lib))
+- express
+- mongoose (mongo from [mongolab.com](https://mongolab.com/welcome/))
+- [debug](https://github.com/visionmedia/debug) for node
+- promises (todo)
+- express-jwt (todo)
 
 ## Build & deployment
-* grunt
-* live compilation scss/compass
-* build with [drone.io](https://drone.io/github.com/dimapod/ci-tests): [![Build Status](https://drone.io/github.com/dimapod/ci-tests/status.png)](https://drone.io/github.com/dimapod/ci-tests/latest)
-** unit tests
-** integration tests
-** deployment
-* automatically deployed to [heroku](http://ci-tests.herokuapp.com/app)
-* dist (todo)
-** clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin (todo)
-** commit to github/dist brunch (todo)
+- grunt.js
+- live compilation scss/compass
+- build with [drone.io](https://drone.io/github.com/dimapod/ci-tests) [![Build Status](https://drone.io/github.com/dimapod/ci-tests/status.png)](https://drone.io/github.com/dimapod/ci-tests/latest)
+  - runs unit tests
+  - runs integration tests
+  - automatic deploy to [heroku](http://ci-tests.herokuapp.com/app)
+- dist (todo)
+  - clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin (todo)
+  - commit to github/dist brunch (todo)
