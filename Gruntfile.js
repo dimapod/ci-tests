@@ -86,6 +86,41 @@ module.exports = function (grunt) {
             }
         },
 
+        // Compile templates
+        ngtemplates: {
+            app: {
+                options: {
+                    module: "myApp"
+                },
+                cwd: 'app',
+                src: "partials/**/*.html",
+                dest: "app/js/templates.js",
+                modul: 'myApp'
+            }
+        },
+
+        // Empties folders to start fresh
+        clean: {
+            dev: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        'app/js/templates.js'
+                    ]
+                }]
+            },
+            dist: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        'app/js/templates.js'
+                    ]
+                }]
+            }
+        },
+
         // Compiles Sass to CSS and generates necessary files if requested
         compass: {
             options: {
@@ -118,15 +153,16 @@ module.exports = function (grunt) {
 
     // Start express server
     grunt.registerTask('express', 'Start a custom web server', function () {
+        grunt.file.write( "app/js/templates.js", "" ); // create empty file (for dev mode)
         require('./server/server.js');
     });
 
     // Used by the CLI build servers
     grunt.registerTask('test', ['karma:continuous']);
     grunt.registerTask('drone', ['express', 'compass:server', 'karma:drone', 'protractor:drone']);
-    grunt.registerTask('serve', ['env:dev', 'express', 'watch']);
+    grunt.registerTask('serve', ['env:dev', 'clean:dev', 'express', 'watch']);
     grunt.registerTask('build', [
-        'compass:server' // TODO : clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin
+        'env:prod', 'clean:dist', 'ngtemplates' // TODO : clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin
     ]);
 
     grunt.registerTask('default', [/* TODO 'jshint', */ 'build']);

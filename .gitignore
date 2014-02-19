@@ -6,3 +6,4 @@ tmp
 .idea
 *.iml
 .sass-cache
+app/js/templates.js
