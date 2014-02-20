@@ -2,7 +2,7 @@
 
 ## Front
 - AngularJS ([seed](https://github.com/angular/angular-seed))
-  - feature oriented organisation (todo) 
+  - feature oriented organisation
 - Sass with Compass
 - Tests
   - karma: for unit tests (coffeescript)

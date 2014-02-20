@@ -90,12 +90,11 @@ module.exports = function (grunt) {
         ngtemplates: {
             app: {
                 options: {
-                    module: "myApp"
+                    module: "b"
                 },
                 cwd: 'app',
-                src: "partials/**/*.html",
-                dest: "app/js/templates.js",
-                modul: 'myApp'
+                src: "scripts/**/*.html",
+                dest: "app/scripts/templates.js"
             }
         },
 
@@ -106,7 +105,7 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        'app/js/templates.js'
+                        'app/scripts/templates.js'
                     ]
                 }]
             },
@@ -115,7 +114,7 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        'app/js/templates.js'
+                        'app/scripts/templates.js'
                     ]
                 }]
             }
@@ -153,7 +152,7 @@ module.exports = function (grunt) {
 
     // Start express server
     grunt.registerTask('express', 'Start a custom web server', function () {
-        grunt.file.write( "app/js/templates.js", "" ); // create empty file (for dev mode)
+        grunt.file.write( "app/scripts/templates.js", "" ); // create empty file (for dev mode)
         require('./server/server.js');
     });
 
