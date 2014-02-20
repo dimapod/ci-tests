@@ -4,7 +4,8 @@ angular.module('b', [
         'ngRoute',
         'b.filters',
         'b.services',
-        'b.directives'
+        'b.directives',
+        'b.directives.height'
     ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/view1', {templateUrl: 'scripts/main/view1/view1.tpl.html', controller: 'view1Ctrl'});
