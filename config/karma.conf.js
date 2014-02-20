@@ -3,6 +3,8 @@ module.exports = function (config) {
         basePath: '../',
 
         files: [
+            'app/lib/jquery/jquery-1.11.0.min.js',
+            'app/lib/lodash/lodash.underscore-2.4.1.min.js',
             'app/lib/angular/angular.js',
             'app/lib/angular/angular-*.js',
             'test/lib/angular/angular-mocks.js',

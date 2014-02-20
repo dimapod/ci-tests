@@ -5,7 +5,7 @@
  */
 
 angular.module('b.directives.height', []).
-    directive('resizeHeight', function () {
+    directive('resizeHeight', function ($window) {
         function endsWith(str, suffix) {
             return str.indexOf(suffix, str.length - suffix.length) !== -1;
         }
@@ -28,11 +28,11 @@ angular.module('b.directives.height', []).
             },
             link: function (scope, elem, attrs) {
                 var handler = function () {
-                    var windowHeight = $( window ).height();
+                    var windowHeight = $window.innerHeight;
                     elem.height(calculateHeight(windowHeight, scope.offset));
                 };
-                $(window).ready(handler);
-                window.addEventListener('resize', _.debounce(handler, 50));
+                $($window).ready(_.debounce(handler, 50));
+                $window.addEventListener('resize', _.debounce(handler, 50));
             }
         };
     });
