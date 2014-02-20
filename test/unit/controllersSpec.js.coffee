@@ -1,7 +1,7 @@
 'use strict';
 
 describe 'controllers', ->
-  beforeEach module('myApp.controllers')
+  beforeEach module('b')
 
   it 'should ....', -> inject ->
     # spec

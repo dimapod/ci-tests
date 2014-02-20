@@ -1,7 +1,7 @@
 'use strict';
 
 describe 'filter', ->
-  beforeEach module 'myApp.filters'
+  beforeEach module 'b.filters'
 
   describe 'interpolate', ->
     beforeEach module ($provide) ->

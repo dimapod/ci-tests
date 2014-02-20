@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         watch: {
             jsTest: {
                 files: ['test/unit/{,*/}*.js'],
-                tasks: ['newer:jshint:test', 'karma']
+                tasks: ['karma']
             },
             compass: {
                 files: ['<%= b.app %>/styles/{,*/}*.{scss,sass}'],
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
     });
 
     // Used by the CLI build servers
-    grunt.registerTask('test', ['karma:continuous']);
+    grunt.registerTask('test', ['karma:default']);
     grunt.registerTask('drone', ['express', 'compass:server', 'karma:drone', 'protractor:drone']);
     grunt.registerTask('serve', ['env:dev', 'clean:dev', 'express', 'watch']);
     grunt.registerTask('build', [

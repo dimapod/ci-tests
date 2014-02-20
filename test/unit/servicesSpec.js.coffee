@@ -1,7 +1,7 @@
 'use strict';
 
 describe 'directives', ->
-  beforeEach module 'myApp.services'
+  beforeEach module 'b.services'
 
   describe 'version', ->
     it 'should return current version', ->
