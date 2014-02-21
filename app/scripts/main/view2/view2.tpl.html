@@ -3,3 +3,13 @@
   Showing of 'interpolate' filter:
   {{ 'Current version is v%VERSION%.' | interpolate }}
 </p>
+
+<div class="dropzone" file-drop="[image/png, image/jpeg, image/gif]"
+     file-meta="fileMeta">
+  <span>Drop Image Here</span>
+</div>
+
+<div class="image-container">
+  <img ng-src="{{image}}"/>
+  <span class="file-name">{{fileMeta.name}}</span>
+</div>

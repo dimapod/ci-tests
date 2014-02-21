@@ -94,3 +94,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   content: "";
   padding: 0;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000335}}
+.dropzone {
+  width: 250px;
+  height: 45px;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 30px;
+  margin: 20px;
+  font-family: Arial;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000345}}
+.image-container {
+  width: 300px;
+  height: 300px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000350}}
+.image-container img {
+  max-width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000354}}
+.file-name {
+  font-family: Arial;
+}
