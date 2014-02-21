@@ -2,8 +2,10 @@
 <html lang="en" ng-app="b">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <title>Project B.</title>
+  <!-- build:css({.tmp,app}) css/main.css -->
+  <link rel="stylesheet" href="styles/app.css">
+  <!-- endbuild -->
 </head>
 <body>
   <ul class="menu">
@@ -13,7 +15,7 @@
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div>Angular B: v<span app-version></span></div>
 
   <!-- build:js scripts/vendor.js -->
   <script src="lib/jquery/jquery-1.11.0.min.js"></script>
@@ -32,8 +34,6 @@
   <script src="scripts/commons/resizeHeightDirective.js"></script>
   <script src="scripts/commons/files/fileDropDirective.js"></script>
   <script src="scripts/commons/files/fileReaderService.js"></script>
-
-  <script src="scripts/templates.js"></script> <!-- Generated templates -->
   <!-- endbuild -->
 
 </body>

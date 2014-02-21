@@ -89,14 +89,15 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= b.app %>/styles',
-                cssDir: '<%= b.app %>/css',
+                cssDir: '<%= b.app %>/styles',
+                //cssDir: '<%= b.app %>/css',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= b.app %>/img',
                 javascriptsDir: '<%= b.app %>/js',
-                fontsDir: '<%= b.app %>/fonts',
+                fontsDir: '<%= b.app %>/styles/fonts',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/fonts',
+                httpFontsPath: '/styles/fonts',
                 relativeAssets: false,
                 assetCacheBuster: false,
                 raw: 'Sass::Script::Number.precision = 10\n'
@@ -117,11 +118,12 @@ module.exports = function (grunt) {
         ngtemplates: {
             app: {
                 options: {
-                    module: "b"
+                    module: "b",
+                    usemin: 'scripts/scripts.js'
                 },
                 cwd: 'app',
                 src: "scripts/**/*.html",
-                dest: "<%= b.templates %>"
+                dest: ".tmp/templates.js"
             }
         },
 
@@ -132,7 +134,8 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= b.templates %>'
+                        '<%= b.dist %>/*',
+                        '!<%= b.dist %>/.git*'
                     ]
                 }]
             },
@@ -141,9 +144,24 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= b.templates %>'
+                        '<%= b.dist %>/*',
+                        '!<%= b.dist %>/.git*'
                     ]
                 }]
+            }
+        },
+
+        // Renames files for browser caching purposes
+        rev: {
+            dist: {
+                files: {
+                    src: [
+                        '<%= b.dist %>/scripts/{,*/}*.js',
+                        '<%= b.dist %>/styles/{,*/}*.css',
+                        '<%= b.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                        '<%= b.dist %>/styles/fonts/*'
+                    ]
+                }
             }
         },
 
@@ -151,18 +169,72 @@ module.exports = function (grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '<%= b.app %>/index.html',
             options: {
-                dest: '<%= yeoman.dist %>'
+                dest: '<%= b.dist %>'
             }
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
-            html: ['<%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            html: ['<%= b.dist %>/{,*/}*.html'],
+            css: ['<%= b.dist %>/styles/{,*/}*.css'],
             options: {
-                assetsDirs: ['<%= yeoman.dist %>']
+                assetsDirs: ['<%= b.dist %>']
+            }
+        },
+
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= b.app %>/img',
+                    src: '{,*/}*.{png,jpg,jpeg,gif}',
+                    dest: '<%= b.dist %>/img'
+                }]
+            }
+        },
+
+        ngmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/concat/scripts',
+                    src: '*.js',
+                    dest: '.tmp/concat/scripts'
+                }]
+            }
+        },
+
+        // Copies remaining files to places other tasks can use
+        copy: {
+            dist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= b.app %>',
+                    dest: '<%= b.dist %>',
+                    src: [
+                        '*.{ico,png,txt}',
+                        //'.htaccess',
+                        '*.html',
+                        //'views/{,*/}*.html',
+                        //'bower_components/**/*',
+                        'img/{,*/}*.{webp}',
+                        'fonts/*'
+                    ]
+                }, {
+                    expand: true,
+                    cwd: '.tmp/img',
+                    dest: '<%= b.dist %>/img',
+                    src: ['generated/*']
+                }]
+            },
+            styles: {
+                expand: true,
+                cwd: '<%= b.app %>/styles',
+                dest: '.tmp/css/',
+                src: '{,*/}*.css'
             }
         }
 
@@ -170,7 +242,7 @@ module.exports = function (grunt) {
 
     // Start express server
     grunt.registerTask('express', 'Start a custom web server', function () {
-        grunt.file.write( "app/scripts/templates.js", "" ); // create empty file (for dev mode)
+        //grunt.file.write( "app/scripts/templates.js", "" ); // create empty file (for dev mode)
         require('./server/server.js');
     });
 
@@ -179,7 +251,18 @@ module.exports = function (grunt) {
     grunt.registerTask('drone', ['express', 'compass:server', 'karma:drone', 'protractor:drone']);
     grunt.registerTask('serve', ['env:dev', 'clean:dev', 'express', 'watch']);
     grunt.registerTask('build', [
-        'clean:dist', 'ngtemplates' // TODO : clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin
+        'clean:dist',
+        'useminPrepare',
+        'compass:dist',
+        'imagemin',
+        'ngtemplates',
+        'concat',
+        'ngmin',
+        'copy:dist',
+        'cssmin',
+        'uglify',
+        'rev',
+        'usemin'
     ]);
 
     grunt.registerTask('default', [/* TODO 'jshint', */ 'build']);
