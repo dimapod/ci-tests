@@ -10,24 +10,6 @@ angular.module('b.directives.fileDrop', [])
                 var uuid = 1;
                 jQuery && jQuery.event.props.push("dataTransfer");
 
-                var processDragOverOrEnter = function (event) {
-                    if (!event) return false;
-                    event.preventDefault();
-                    event.dataTransfer.effectAllowed = 'copy';
-                    return false;
-                };
-
-//                var validMimeTypes = attrs.fileDropzone;
-
-//                var isTypeValid = function (type) {
-//                    if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
-//                        return true;
-//                    } else {
-//                        alert("Invalid file type.  File must be one of following types " + validMimeTypes);
-//                        return false;
-//                    }
-//                };
-
                 var processDrop = function (event) {
                     if (event == null) return false;
                     event.preventDefault();
@@ -43,9 +25,28 @@ angular.module('b.directives.fileDrop', [])
                     return false;
                 };
 
-                element.bind('dragover', processDragOverOrEnter);
-                element.bind('dragenter', processDragOverOrEnter);
-                element.bind('drop', processDrop);
+                element.bind('dragover', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'copy';
+                });
+                element.bind('dragenter', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    element.addClass('on-drag-enter');
+                });
+                element.bind('dragleave', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    element.removeClass('on-drag-enter');
+                });
+                element.bind('drop', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    element.removeClass('on-drag-enter');
+                    return processDrop(e);
+                });
+
             }
         };
     });

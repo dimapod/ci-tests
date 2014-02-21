@@ -21,7 +21,6 @@
 
 .menu > li:before {
   content: "|";
-//  padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
@@ -29,27 +28,27 @@
   padding: 0;
 }
 
-
-
-
 .dropzone {
   width: 250px;
   height: 45px;
   border: 1px solid #ccc;
   text-align: center;
   padding: 30px;
-  margin: 20px;
   font-family: Arial;
+
+  &.on-drag-enter {
+    background-color: gray;
+  }
 }
 
 .image-container {
   width: 300px;
   height: 300px;
+  img {
+    max-width: 100%;
+  }
 }
 
-.image-container img {
-  max-width: 100%;
-}
 
 .file-name {
   font-family: Arial;

@@ -35,7 +35,12 @@ angular.module('b.services.fileReader', [])
             var deferred = $q.defer();
 
             var reader = getReader(deferred);
-            reader.readAsDataURL(file);
+
+            if (file.type.indexOf("text") == 0) {
+                reader.readAsText(file);
+            } else {
+                reader.readAsDataURL(file);
+            }
 
             return deferred.promise;
         };

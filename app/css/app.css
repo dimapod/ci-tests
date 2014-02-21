@@ -89,35 +89,37 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   content: "|";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000326}}
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000331}}
 .dropzone {
   width: 250px;
   height: 45px;
   border: 1px solid #ccc;
   text-align: center;
   padding: 30px;
-  margin: 20px;
   font-family: Arial;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000339}}
+.dropzone.on-drag-enter {
+  background-color: gray;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000344}}
 .image-container {
   width: 300px;
   height: 300px;
 }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000347}}
 .image-container img {
   max-width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dpodyach\/Development\/xke\/ci-integration\/app\/styles\/app\.scss}line{font-family:\0000353}}
 .file-name {
   font-family: Arial;
 }

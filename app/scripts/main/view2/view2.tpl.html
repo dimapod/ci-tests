@@ -6,10 +6,13 @@
 
 <div class="dropzone" file-drop="[image/png, image/jpeg, image/gif]"
      file-meta="fileMeta">
-  <span>Drop Image Here</span>
+  Drop image or text/* file here
 </div>
+
+<div>{{text}}</div>
 
 <div class="image-container">
   <img ng-src="{{image}}"/>
   <span class="file-name">{{fileMeta.name}}</span>
 </div>
+
