@@ -14,7 +14,7 @@ angular.module('b.directives.height', []).
             if (!offset) return windowHeight;
             offset = offset.trim();
             if (endsWith(offset, "%")) {
-                var ps = offset.substr(0, offset.length-1);
+                var ps = offset.substr(0, offset.length - 1);
                 return windowHeight - Math.round(windowHeight * parseInt(ps) / 100);
             }
             return windowHeight - parseInt(offset);
@@ -27,12 +27,12 @@ angular.module('b.directives.height', []).
                 offset: "@"
             },
             link: function (scope, elem, attrs) {
+                var win = angular.element($window);
                 var handler = function () {
-                    var windowHeight = $window.innerHeight;
-                    elem.height(calculateHeight(windowHeight, scope.offset));
+                    elem.height(calculateHeight(win.innerHeight(), scope.offset));
                 };
-                $($window).ready(_.debounce(handler, 50));
-                $window.addEventListener('resize', _.debounce(handler, 50));
+                win.bind("resize", _.debounce(handler, 50));
+                handler();
             }
         };
     });
