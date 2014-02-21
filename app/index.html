@@ -15,10 +15,14 @@
 
   <div>Angular seed app: v<span app-version></span></div>
 
+  <!-- build:js scripts/vendor.js -->
   <script src="lib/jquery/jquery-1.11.0.min.js"></script>
   <script src="lib/lodash/lodash.underscore-2.4.1.min.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/commons/services.js"></script>
   <script src="scripts/main/view1/view1Ctrl.js"></script>
@@ -29,8 +33,8 @@
   <script src="scripts/commons/files/fileDropDirective.js"></script>
   <script src="scripts/commons/files/fileReaderService.js"></script>
 
-  <!-- Generated templates -->
-  <script src="scripts/templates.js"></script>
-  <!--  -->
+  <script src="scripts/templates.js"></script> <!-- Generated templates -->
+  <!-- endbuild -->
+
 </body>
 </html>

@@ -13,7 +13,8 @@ module.exports = function (grunt) {
         // Project settings
         b: {
             app: 'app',
-            dist: 'dist'
+            dist: 'dist',
+            templates: 'app/scripts/templates.js'
         },
         pkg: grunt.file.readJSON('package.json'),
 
@@ -22,12 +23,10 @@ module.exports = function (grunt) {
                 //Shared Options Hash
             },
             dev: {
-                NODE_ENV: 'development',
-                //DEBUG: '*'
+                NODE_ENV: 'development'
             },
             prod: {
-                NODE_ENV: 'production',
-                DEBUG: 'app.*'
+                NODE_ENV: 'production'
             }
         },
 
@@ -86,40 +85,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Compile templates
-        ngtemplates: {
-            app: {
-                options: {
-                    module: "b"
-                },
-                cwd: 'app',
-                src: "scripts/**/*.html",
-                dest: "app/scripts/templates.js"
-            }
-        },
-
-        // Empties folders to start fresh
-        clean: {
-            dev: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        'app/scripts/templates.js'
-                    ]
-                }]
-            },
-            dist: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        'app/scripts/templates.js'
-                    ]
-                }]
-            }
-        },
-
         // Compiles Sass to CSS and generates necessary files if requested
         compass: {
             options: {
@@ -146,6 +111,59 @@ module.exports = function (grunt) {
                     debugInfo: true
                 }
             }
+        },
+
+        // Compile templates
+        ngtemplates: {
+            app: {
+                options: {
+                    module: "b"
+                },
+                cwd: 'app',
+                src: "scripts/**/*.html",
+                dest: "<%= b.templates %>"
+            }
+        },
+
+        // Empties folders to start fresh
+        clean: {
+            dev: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        '<%= b.templates %>'
+                    ]
+                }]
+            },
+            dist: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        '<%= b.templates %>'
+                    ]
+                }]
+            }
+        },
+
+        // Reads HTML for usemin blocks to enable smart builds that automatically
+        // concat, minify and revision files. Creates configurations in memory so
+        // additional tasks can operate on them
+        useminPrepare: {
+            html: '<%= yeoman.app %>/index.html',
+            options: {
+                dest: '<%= yeoman.dist %>'
+            }
+        },
+
+        // Performs rewrites based on rev and the useminPrepare configuration
+        usemin: {
+            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            options: {
+                assetsDirs: ['<%= yeoman.dist %>']
+            }
         }
 
     });
@@ -161,7 +179,7 @@ module.exports = function (grunt) {
     grunt.registerTask('drone', ['express', 'compass:server', 'karma:drone', 'protractor:drone']);
     grunt.registerTask('serve', ['env:dev', 'clean:dev', 'express', 'watch']);
     grunt.registerTask('build', [
-        'env:prod', 'clean:dist', 'ngtemplates' // TODO : clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin
+        'clean:dist', 'ngtemplates' // TODO : clean, imagemin, autoprefixer, concat, ngmin, copy:dist, cssmin, uglify, rev, usemin, htmlmin
     ]);
 
     grunt.registerTask('default', [/* TODO 'jshint', */ 'build']);
