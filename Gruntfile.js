@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = function (grunt) {
     // Debug conf
     process.env.DEBUG = process.env.DEBUG || "app.* express:router";
@@ -236,8 +235,19 @@ module.exports = function (grunt) {
                 dest: '.tmp/css/',
                 src: '{,*/}*.css'
             }
-        }
+        },
 
+        // make a zipfile
+        compress: {
+            main: {
+                options: {
+                    archive: '.tmp/site.zip'
+                },
+                files: [
+                    {src: ['dist/**'], dest: '.'}
+                ]
+            }
+        }
     });
 
     // Start express server
@@ -262,7 +272,8 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'rev',
-        'usemin'
+        'usemin',
+        'compress'
     ]);
 
     grunt.registerTask('default', [/* TODO 'jshint', */ 'build']);
