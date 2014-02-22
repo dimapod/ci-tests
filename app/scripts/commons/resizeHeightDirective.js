@@ -27,12 +27,18 @@ angular.module('b.directives.height', []).
                 offset: "@"
             },
             link: function (scope, elem, attrs) {
+                var i = Math.random(1000) * 1000;
                 var win = angular.element($window);
                 var handler = function () {
+                    console.log("resize", i);
                     elem.height(calculateHeight(win.innerHeight(), scope.offset));
                 };
                 win.bind("resize", _.debounce(handler, 50));
                 handler();
+
+                scope.$on('$destroy', function() {
+                    win.unbind("resize");
+                });
             }
         };
     });
