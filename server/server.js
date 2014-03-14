@@ -5,8 +5,17 @@ var debug = require('debug')('app.server')
     , db = require('./db/db')
     , handler = require('./handler/handler')(db);
 
+var auth = require('http-auth');
+var basic = auth.basic({
+        realm: "B Area."
+    }, function (username, password, callback) {
+        callback(username === "projetb" && password === "!mercenaires");
+    }
+);
+
 debug('Creating Express server...');
 var app = express();
+app.use(auth.connect(basic));
 
 // Apply the configuration
 config.applyConfiguration(app);
