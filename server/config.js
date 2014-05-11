@@ -7,7 +7,7 @@ var applyConfiguration = function (app) {
     app.configure(function () {
 		debug('setting up common configuration...');
 
-        app.set('port', process.env.PORT || 8000);
+        app.set('port', process.env.PORT || 8001);
         app.use(express.static(path.join(__dirname, '../')));
         // app.use(express.bodyParser());  // => see http://andrewkelley.me/post/do-not-use-bodyparser-with-express-js.html
         app.use(express.json());

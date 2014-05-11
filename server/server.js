@@ -15,7 +15,10 @@ var basic = auth.basic({
 
 debug('Creating Express server...');
 var app = express();
-app.use(auth.connect(basic));
+
+if (process.env.NODE_ENV === "production") {
+    app.use(auth.connect(basic));
+}
 
 // Apply the configuration
 config.applyConfiguration(app);
